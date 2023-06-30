@@ -67,7 +67,7 @@ class Command(BaseCommand):
         for i in range(len(flist[start_line:start_line + 200])):
             list_values.append([])
 
-        # for i in range(len(flist[start_line:start_line])):
+        # for i in range(len(flist[start_line:])):
         #     list_values.append([])
 
         index_col = 0 
