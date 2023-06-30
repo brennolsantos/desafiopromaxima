@@ -4,7 +4,7 @@ Projeto do desafio para promaxima
 Esse projeto consiste em uma aplicação frontend Nuxtjs integrada com uma API RESTful em Django com dados persistidos em um banco PostgreSQL. Os dados são importados da seguinte fonte: https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos 
 A importação ocorre via comando personalizado no backend com o arquivo .xlsx já incluido no repositório (uma possivel melhoria poderia ser o fetching automatico desse arquivo no back pela url). A tela (imagens mais a frente ainda nessa documentação) consiste em uma entrada de filtro e chave de busca.
 
-Os filtros disponíveis estão listados a seguir. As chaves de busca pode ser uma string incompleta ou completa do dado procurado que está no campo do xls indicado pelo filtro.
+Os filtros disponíveis estão listados a seguir e não precisam ser digitados, pois estão em uma tag de seleção. As chaves de busca pode ser uma string incompleta ou completa do dado procurado que está no campo do xls indicado pelo filtro.
 
 - PRINCÍPIO ATIVO
 - CNPJ
@@ -26,9 +26,9 @@ Os filtros disponíveis estão listados a seguir. As chaves de busca pode ser um
 
 Após uma busca bem sucedida (caracteres inválidos ou totalmente em branco podem retornar Response 404, por isso certifique-se de digitar um valor e escolher um filtro. Atente-se a tipo de campo. Os campos "restrição hospitalar", "cap", "confaz 87", "icms" e "comercialização 2022" devem receber como entrada na buscas as palavras "sim" ou "não" podendo começar com uma letra maiúscula. O campo "lista de concessão de crédito" consulta da mesma forma apenas com "positiva" e "negativa". fica como melhoria usar selects de opções padrões nesses campos, o que não foi possível ainda devido ao pouco tempo livre de desenvolvimento.
 
-A tela seguinte (também tera imagens). Consiste de uma tabela com todos os registros encontrados. Se não houve resultados ou algum erro na requisição, a tabela estara vazia. A caixa de texto no inicio de tela serve para exibir o testo completo de uma coluna que possui texto muito longo para a tabela. Apenas clique no campo e a informação aparecerá na caixa. Isso funciona para a tabela toda. 
+A tela seguinte (também tera imagens). Consiste de uma tabela com todos os registros encontrados. Se não houve resultados ou algum erro na requisição, a tabela estara vazia. A caixa de texto no inicio de tela serve para exibir o texto completo de uma coluna que possui texto muito longo para a tabela. Apenas clique no campo e a informação aparecerá na caixa. Isso funciona para a tabela toda. 
 
-Você pode selecionar linhas para serem exportadas em xls. A primeira coluna contem um checkbox e um check no cabeçalho da tela marca ou desmarca todas as linhas.
+Você pode selecionar linhas para serem exportadas em xls. A primeira coluna contem um checkbox e um checkbox no cabeçalho da tela marca ou desmarca todas as linhas.
 
 O input de formatação aceita um nome para o arquivo. Não precisa colocar a extensão. Aperte o botão de importação e o download do arquivo acontecerá.
 
@@ -53,23 +53,60 @@ Aguarde até a criação de todos os containeres.
 Antes de usar a aplicação vamos ter que criar a tabela usada pelo django e importar os arquivos.
 
 Já podemos subir com: docker-compose up -d
-Verifique se a aplicação em localhost:3000 funcionou, pois nem sempre o vue-router é instalado automaticamente. Se isso acontecer execute "docker-compose exec frontend npm install vue-router" e dê build novamente.
+Verifique se a aplicação em localhost:3000 funcionou, pois nem sempre o vue-router é instalado automaticamente. Se isso acontecer:
 
-Execute no prompt: docker-compose exec python manage.py makemigrations
+&nspb;
+
+
+* Execute "docker-compose exec frontend npm install vue-router"
+
+&nbsp;
+
+ 
+e dê build novamente.
+
+* Execute no prompt: docker-compose exec python manage.py makemigrations
+
+&nbsp;
+
+
 E em seguida: docker-compose exec python manage.py migrate
+
+&nbsp;
+
 
 Verifique no log se alguma tabela do app "core" foi criada. Caso não:
 
-Execute no prompt: docker-compose exec python manage.py makemigrations core
+&nbsp;
+* Execute no prompt: docker-compose exec python manage.py makemigrations core
+
+&nbsp;
+
 E em seguida: docker-compose exec python manage.py migrate
+
+&nbsp;
+
 
 Agora já podemos importar dados do nosso xlsl.
 
-Execute no prompt: docker-compose exec backend python manage.py inser_from_xls import.xls
+&nbsp;
+
+
+* Execute no prompt: docker-compose exec backend python manage.py inser_from_xls import.xls
+  
+&nbsp;
+
 
 Acompanhe o número de registros e incluídos e, ao fim, não esqueça de levantar a api novamente com:
 
-Execute: docker-compose exec backend python manage.py runserver 0.0.0.0:8080
+&nbsp;
+
+
+* Execute: docker-compose exec backend python manage.py runserver 0.0.0.0:8080
+
+  
+&nbsp;
+
 
 # Usando a aplicação
 
