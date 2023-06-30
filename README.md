@@ -41,7 +41,8 @@ Certifique-se de ter o Docker,  Docker-compose e git instalados na máquina. No 
 ![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/1d4af34b-6820-48cd-9e81-661a37d70fcc)
 
 Em seguida, mude para o diretorio criado e vá para o arquivo "backend\core\managements\commands\insert_from_xls.py". Neste arquivo há um unico comentário que orienta se você não faz nenhuma modificação e importa apenas 200 linhas do .xlsx ou importa todas para a banco. Importar todas as linhas leva alguns minutos devido a extensão do arquivo 
-![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/5a84de85-0042-4b96-b69a-b9a6c471f84b)
+![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/cdc3afb6-9f5e-43c5-b1e0-63e86ad9e751)
+
 
 Agora vamos criar os containers: posicione-se na mesma pasta do docker-compose.yml e rode no promtpt: "docker-compose build".
 Aguarde até a criação de todos os containeres.
