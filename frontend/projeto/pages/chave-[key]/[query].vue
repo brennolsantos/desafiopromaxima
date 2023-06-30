@@ -208,7 +208,7 @@ const markallforexport = () => {
                 </thead>
                 <tbody>
                     <tr v-if="data.length == 0">
-                        <td colspan="48" class="text-start"><strong>Nenhuma informação encontra</strong></td>
+                        <td colspan="48" class="text-start"><strong>Nenhuma informação encontrada</strong></td>
                     </tr>
                     <tr v-else v-for="d in data" :key="d.id">
                         <td><input :id="'check' + d.id" class="form-check-input" type="checkbox" @change="markforexport(d.id)"></td>
