@@ -1,0 +1,4 @@
+<template>
+        <SearchBar></SearchBar>
+</template>
+
