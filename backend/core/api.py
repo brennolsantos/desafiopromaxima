@@ -35,7 +35,8 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 			'sim': True,
 			'não': False,
 			'SIM': True,
-			'NÃO': False 
+			'NÃO': False,
+			None : None
 		}
 
 		pn_values = {
@@ -44,16 +45,23 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 			'Positiva': 'P',
 			'negativa': 'N',
 			'Negativa': 'N',
-			'NEGATIVA': 'N'
+			'NEGATIVA': 'N',
+			None: None
 		}
 
 		try:
-			if(type(restricao_hospitalar) == str) restricao_hospitalar = restricao_hospitalar.strip()
-			if(type(cap) == str) cap = cap.strip()
-			if(type(confaz87) == str) confaz87 = cap.strip()
-			if(type(icms0) == str) icms0 = icms0.strip()
-			if(type(lista_concessao_credito) == str) lista_concessao_credito = lista_concessao_credito.strip()
-			if(type(comercializacao_2022) == str) comercializacao_2022= comercializacao_2022.strip()
+			if(type(restricao_hospitalar) == str):
+				restricao_hospitalar = restricao_hospitalar.strip()
+			if(type(cap) == str):
+				cap = cap.strip()
+			if(type(confaz87) == str):
+				confaz87 = cap.strip()
+			if(type(icms0) == str):
+				icms0 = icms0.strip()
+			if(type(lista_concessao_credito) == str):
+				lista_concessao_credito = lista_concessao_credito.strip()
+			if(type(comercializacao_2022) == str):
+				comercializacao_2022= comercializacao_2022.strip()
 
 			restricao_hospitalar = bool_values[restricao_hospitalar]
 			cap = bool_values[cap]
@@ -61,6 +69,7 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 			icms0 = bool_values[icms0]
 			lista_concessao_credito = pn_values[lista_concessao_credito]
 			comercializacao_2022 = bool_values[comercializacao_2022]
+
 
 			queryset = self.queryset
 			queryset = queryset.filter(principio_ativo__icontains=principio_ativo) if principio_ativo is not None else queryset 
@@ -87,4 +96,6 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 
 			return Response(serializer.data, status=200)
 		except Exception as e:
-			return Response([], status=204)
+			return Response({
+				'e': str(e)
+				}, status=204)
