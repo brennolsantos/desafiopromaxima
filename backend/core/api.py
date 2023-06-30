@@ -33,7 +33,7 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 			'Sim': True, 
 			'Não': False,
 			'sim': True,
-			'não': False
+			'não': False,
 			'SIM': True,
 			'NÃO': False 
 		}
