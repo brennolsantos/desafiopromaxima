@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: "3.9"
 
 services:
@@ -33,3 +34,40 @@ services:
         - 3000:3000
     
 
+=======
+version: "3.9"
+
+services:
+    backend:
+      build: 
+        context: ./backend
+      restart: always
+      volumes:
+        - .:/usr/share/app
+      ports:
+        - 8080:8080
+      depends_on: 
+        - db
+
+    db:
+      image: postgres
+      ports:
+        - 5432:5432
+      volumes:
+        - .:/data 
+      environment:
+        - POSTGRES_DB=projeto
+        - POSTGRES_USER=projeto
+        - POSTGRES_PASSWORD=projeto
+
+    frontend:   
+      build: 
+        context: ./frontend/projeto
+      volumes:
+        - .:/usr/share/app
+      restart: always 
+      ports:
+        - 3000:3000
+    
+
+>>>>>>> 439c9990f1c73d09cbd1f2c180f144b7649b2397
