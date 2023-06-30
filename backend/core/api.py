@@ -96,6 +96,4 @@ class MedPMGVAPI(viewsets.ModelViewSet):
 
 			return Response(serializer.data, status=200)
 		except Exception as e:
-			return Response({
-				'e': str(e)
-				}, status=204)
+			return Response([], status=204)
