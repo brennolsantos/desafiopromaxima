@@ -25,6 +25,7 @@ Os filtros disponíveis estão listados a seguir e não precisam ser digitados, 
 - TARJA
 
 Após uma busca bem sucedida (caracteres inválidos ou totalmente em branco podem retornar Response 404, por isso certifique-se de digitar um valor e escolher um filtro. Atente-se a tipo de campo. Os campos "restrição hospitalar", "cap", "confaz 87", "icms" e "comercialização 2022" devem receber como entrada na buscas as palavras "sim" ou "não" podendo começar com uma letra maiúscula. O campo "lista de concessão de crédito" consulta da mesma forma apenas com "positiva" e "negativa". fica como melhoria usar selects de opções padrões nesses campos, o que não foi possível ainda devido ao pouco tempo livre de desenvolvimento.
+No caso do campo for uma informacao numérica ou um texto (presumi que o usuário sabe o que significa esses nomes), não ha restrição de caracteres ou palavras.
 
 A tela seguinte (também tera imagens). Consiste de uma tabela com todos os registros encontrados. Se não houve resultados ou algum erro na requisição, a tabela estara vazia. A caixa de texto no inicio de tela serve para exibir o texto completo de uma coluna que possui texto muito longo para a tabela. Apenas clique no campo e a informação aparecerá na caixa. Isso funciona para a tabela toda. 
 
@@ -55,7 +56,7 @@ Antes de usar a aplicação vamos ter que criar a tabela usada pelo django e imp
 Já podemos subir com: docker-compose up -d
 Verifique se a aplicação em localhost:3000 funcionou, pois nem sempre o vue-router é instalado automaticamente. Se isso acontecer:
 
-&nspb;
+&nbsp;
 
 
 * Execute "docker-compose exec frontend npm install vue-router"
@@ -92,12 +93,12 @@ Agora já podemos importar dados do nosso xlsl.
 &nbsp;
 
 
-* Execute no prompt: docker-compose exec backend python manage.py inser_from_xls import.xls
+* Execute no prompt: docker-compose exec backend python manage.py insert_from_xls import.xls
   
 &nbsp;
 
 
-Acompanhe o número de registros e incluídos e, ao fim, não esqueça de levantar a api novamente com:
+Acompanhe o número de registros incluídos e, ao fim, não esqueça de levantar a api novamente com:
 
 &nbsp;
 
@@ -123,7 +124,7 @@ Vamos tentar achar registros com principio ativo Valproato:
 Foi achado o seguinte registro para nossa importação de 200 registros
 ![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/b828b5a9-f657-4b30-9704-04a47e900a6d)
 
-A tabela é extensa, mas podemos dar scroll para ver os campos restantes, e caso a informação for longa demais para a coluna você pode dar um clique na coluna e será levada a informação completa pela caixa de detalhamento.
+A tabela tem uma linha extensa, mas podemos dar scroll para ver os campos restantes, e caso a informação for longa demais para a coluna você pode dar um clique na coluna e será levada a informação completa pela caixa de detalhamento.
 
 Vamos tentar exportar esse registro. Marque o checkbox do cabecalho ou da linha do registro
 
@@ -133,9 +134,11 @@ Agora, dê um nome simples ao arquivo e aperte em exportar
 
 ![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/6ee3c176-0ce3-4584-9577-e0e304626bfb)
 
+Foi feito o Download automático do arquivo com  a extensão. E você já pode conferir os dados no excel.
+
 ![image](https://github.com/brennolsantos/desafiopromaxima/assets/75213610/325e871b-abbd-4d33-afcd-4f5daf670058)
 
-Foi feito o Download automático do arquivo com  a extensão. E você já pode conferir os dados no excel.
+
 
 # Considerações
 
